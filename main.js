@@ -30,9 +30,11 @@ const app=Vue.createApp({
     },
     methods:{
         validateUser(){
-            //TODO:Función que valida si el usuario ingresado aún no exista.
             let flag=false
-            flag=users.some(el=>el.user===this.user)
+            //El some retorna verdadero si encuentra algun elemento en nuestro arreglo con 
+            //un usuario igual al que queremos ingresar.
+            //El toLowerCase() hace que no importen las mayúsculas o minúsculas.
+            flag=users.some(el=>el.user.toLowerCase()===this.user.toLowerCase())
             return flag
         },
         calculateAge(){
@@ -55,7 +57,7 @@ const app=Vue.createApp({
              }
 
              //Si el usuario ya existe no agrega nada y se sale de esta función.
-             if(flag){
+             if(this.validateUser()){
                 alert("El usuario ya existe, intente nuevamente")
                 return
              }
@@ -77,6 +79,10 @@ const app=Vue.createApp({
             this.lastName=""
             this.user=""
             this.date=null
+
+            //Este console.log es para que vayamos verificando en consola en cada
+            //nueva inserción , cómo va quedando el arreglo.
+            console.log(users)
         }
     }
 })
