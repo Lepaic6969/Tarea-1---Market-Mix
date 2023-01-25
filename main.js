@@ -47,6 +47,26 @@ const app=Vue.createApp({
             const age=Math.trunc(ageInSeconds/(1000*3600*24*365)) //Tomo la parte entera de los años.
             return age
         },
+        generatePassword(){
+            const letters="abcdefghijklmnopqrstuvwzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            const numbers="1234567890"
+            const passwordLength=8
+            let password=""
+            let random=null
+            //La mitad son letras y la otra mitad números.
+            for(let i=0;i<passwordLength;i++){
+                if(i<4){
+                    random=Math.floor(Math.random()*letters.length)
+                    password+=letters.charAt(random)
+                }else{
+                    random=Math.floor(Math.random()*numbers.length)
+                    password+=numbers.charAt(random)
+                }
+            }
+            
+            return password
+           
+        },
         addUser(){
              //Validación para que no se rendericen cosas vacías.
              //Con esto garantizo que ninguno de los campos se vaya vacío.
@@ -66,12 +86,10 @@ const app=Vue.createApp({
                 lastName:this.lastName,
                 fullName:`${this.name} ${this.lastName}`,
                 age:this.calculateAge(),
-                password:"lcgd1234",
+                password:this.generatePassword(),
                 user:this.user
             }
 
-            //TODO: Generar el password de manera aleatoria.
-           
             this.users.push(newUser);
 
             //Reiniciamos los valores de los campos una vez agregado el nuevo usuario.

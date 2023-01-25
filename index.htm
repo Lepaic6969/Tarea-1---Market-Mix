@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="container" class="w-50 mx-auto mt-5 bg-white p-lg-5 p-1 rounded border-success">
-        <h2 v-text="message" v-if="message" ></h2>
+        <h2 v-text="message" v-if="message" class="google-font" ></h2>
         <form @submit.prevent="addUser">
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombres</label>
@@ -35,7 +35,7 @@
         </form>
           
         <!--Aquí voy a renderizar la info inportante de mis usuarios  -->
-        <ul  class="mt-5">
+        <ul  class="mt-5 google-font">
             <li v-for="{fullName,age} in users">
                 {{fullName}} - {{age}}
             </li>
