@@ -72,13 +72,23 @@ const app=Vue.createApp({
              //Con esto garantizo que ninguno de los campos se vaya vacío.
              const condition=this.name && this.lastName && this.user && this.date;
              if(!condition) {
-                alert("Recuerde completar todos los campos")
+            // Este sólo es código del sweet alert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `¡Recuerde llenar todos los campos!
+                    Intente nuevamente`,
+                  })
                 return
              }
 
              //Si el usuario ya existe no agrega nada y se sale de esta función.
              if(this.validateUser()){
-                alert("El usuario ya existe, intente nuevamente")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `El usuario ingresado ya existe`,
+                  })
                 return
              }
             const newUser= {
@@ -97,6 +107,17 @@ const app=Vue.createApp({
             this.lastName=""
             this.user=""
             this.date=null
+
+            /******** CODIGO DEL SWEET ALERT**************/
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro Exitoso',
+                showConfirmButton: false,
+                timer: 2000
+              })
+             
+
+            
 
             //Este console.log es para que vayamos verificando en consola en cada
             //nueva inserción , cómo va quedando el arreglo.

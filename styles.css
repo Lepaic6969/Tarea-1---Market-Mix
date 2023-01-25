@@ -7,3 +7,30 @@ body{
 .google-font{
     font-family: 'Kaushan Script', cursive !important;
 }
+
+@media (max-width:700px) {
+    #container{
+        width:70% !important;
+    }
+}
+@media (max-width:600px) {
+    #container{
+        width:80% !important;
+    }
+}
+@media (max-width:500px) {
+    #container{
+        width:90% !important;
+    }
+}
+@media (max-width:400px) {
+    #container{
+        width:95% !important;
+    }
+    h2.google-font{
+        font-size: 20px;
+    }
+    ul.google-font{
+        font-size: 14px;
+    }
+}
